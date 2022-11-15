@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django_extensions',
     # My apps
     'core',
-    'subscriptions',
+    'subscriptions.apps.SubscriptionsConfig',
     # Libs
 ]
 
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
