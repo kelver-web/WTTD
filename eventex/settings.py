@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     # My apps
     'core',
     'subscriptions',
@@ -132,6 +133,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DEFAULT_FROM_EMAIL = 'kelverwt@gmail.com'
 
 # Email configurations
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
