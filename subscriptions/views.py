@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 
 from subscriptions.forms import SubscriptionForm
+from subscriptions.models import Subscription
 
 
 def subscription(request):
@@ -22,6 +23,7 @@ def create(request):
         return render(request, 'subscriptions/subscription_form.html', {'form': form})
 
 
+    Subscription.objects.create(**form.cleaned_data)
     # Sand email
     _send_mail('Confirmação de inscrição',
                 settings.DEFAULT_FROM_EMAIL,
