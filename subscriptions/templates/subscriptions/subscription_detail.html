@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+ <!-- OVERVIEW -->
+ <section>
+    <div class="content row padding-bottom-3 desktop-12 container">
+        <h1>Olá, {{ subscription.name }} Muito obrigada por se inscrever no Eventex.</h1>
+        <div class="desktop-6">
+            <p>Esses foram os dados que você nos forneceu
+            na sua inscrição:</p>
+            
+            <ul>
+                <li>{{ subscription.name }}</li>
+                <li>Cpf: {{ subscription.cpf }}</li>
+                <li>Email: {{ subscription.email }}</li>
+                <li>Telefone: {{ subscription.phone }}</li>
+            </ul>
+            
+            <p>Em até 48 horas úteis nossa equipe entrará
+            em contato com você para concluirmos a sua
+            matrícula.</p>
+            
+            <p>Atenciosamente,</p>
+            --
+            <p><b>Morena</b></p>
+        </div>
+    </div>
+</section>
+</body>
+{% endblock content %}
+
+
