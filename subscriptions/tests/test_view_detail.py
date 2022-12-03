@@ -11,7 +11,7 @@ class SubscriptionDetailGet(TestCase):
             email='kelverwt@gmail.com',
             phone='84996063625'
         )
-        self.response = self.client.get(r('subscription:detail', self.obj.pk))
+        self.response = self.client.get(r('subscriptions:detail', self.obj.pk))
 
     def test_get(self):
         self.assertEqual(self.response.status_code, 200)
@@ -31,5 +31,5 @@ class SubscriptionDetailGet(TestCase):
 
 class SubscriptionDetailNotFound(TestCase):
     def test_not_found(self):
-        response = self.client.get(r('subscription:detail', 0))
+        response = self.client.get(r('subscriptions:detail', 0))
         self.assertEqual(404, response.status_code)

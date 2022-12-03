@@ -8,7 +8,7 @@ from subscriptions.models import Subscription
 
 class SubscriptionsNewGet(TestCase):
     def setUp(self):
-        self.response = self.client.get(r('subscription:new'))
+        self.response = self.client.get(r('subscriptions:new'))
 
     def test_get(self):
         """Get /inscricao/ must return status code 200"""
@@ -45,12 +45,12 @@ class SubscriptionsNewPostValid(TestCase):
     def setUp(self):
         data = dict(name='Kelver Alves', cpf='12345678901',
                     email='kelverwt@gmail.com', phone='84996068403')
-        self.response = self.client.post(r('subscription:new'), data)
+        self.response = self.client.post(r('subscriptions:new'), data)
 
     def test_post(self):
         """Valid POST should redirect to /inscricao/1/"""
         #self.assertEqual(302, self.response.status_code)
-        self.assertRedirects(self.response, r('subscription:detail', 1))
+        self.assertRedirects(self.response, r('subscriptions:detail', 1))
 
     def test_subscription_send_email(self):
         self.assertEqual(1, len(mail.outbox))
@@ -61,7 +61,7 @@ class SubscriptionsNewPostValid(TestCase):
 
 class SubscriptionsNewPostInvalid(TestCase):
     def setUp(self):
-        self.response = self.client.post(r('subscription:new'), {})
+        self.response = self.client.post(r('subscriptions:new'), {})
 
     def test_post(self):
         """Invalid POST should not redirect /inscricao/"""
@@ -91,3 +91,8 @@ class SubscriptionsNewPostInvalid(TestCase):
 #         self.assertContains(response, 'Inscrição realizada com sucesso!')
 
 
+class TemplateRegressionTest(TestCase):
+    def test_template_has_non_fields_erros(self):
+        invalid_data = dict(name='Kelver Alves', cpf='12345678901')
+        response = self.client.post(r('subscriptions:new'), invalid_data)
+        self.assertContains(response, '<ul class="errorlist nonfield">')

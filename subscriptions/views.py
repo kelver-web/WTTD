@@ -39,7 +39,7 @@ def create(request):
     # Success feedback
     # messages.success(request, 'Inscrição realizada com sucesso!')
 
-    return HttpResponseRedirect(r('subscription:detail', subscription.pk))
+    return HttpResponseRedirect(r('subscriptions:detail', subscription.pk))
 
 
 def detail(request, pk):
