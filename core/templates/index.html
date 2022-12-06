@@ -16,7 +16,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/basalstyle/style.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/mainn.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main0.css' %}">
 
         <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
 
@@ -62,7 +62,11 @@
                 {% for speaker in speakers %}
                     <div class="desktop-4">
                         <img src="{{ speaker.photo }}">
-                        <h4>{{ speaker.name }}</h4>
+                        <h4>
+                            <a href="{{ speaker.get_absolute_url }}">
+                                {{ speaker.name }}
+                            </a>                            
+                        </h4>
                     </div>
                 {% endfor %}
             </div>
