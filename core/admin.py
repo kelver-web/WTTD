@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Speaker, Contact
+from .models import Speaker, Contact, Talk
 
 # Register your models here.
 
@@ -25,3 +25,4 @@ class SpeakerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Speaker, SpeakerAdmin)
+admin.site.register(Talk)
