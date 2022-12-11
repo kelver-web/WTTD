@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
+from core.managers import KindQuerySet, PeriodManager
 
 # Create your models here.
 
@@ -32,6 +33,12 @@ class Contact(models.Model):
     kind = models.CharField('tipo', max_length=1, choices=KINDS)
     value = models.CharField('valor', max_length=100)
 
+    objects = KindQuerySet.as_manager() #Alinhando o API com um manager customizado 
+    #objects = KindContactManager()
+    # objects = models.Manager()
+    # emails = EmailContactManager()
+    # phones = PhoneContactManager()
+
     class Meta:
         verbose_name = 'Contato'
         verbose_name_plural = 'Contatos'
@@ -44,6 +51,8 @@ class Talk(models.Model):
     start = models.TimeField('começo', blank=True, null=True)
     description = models.TextField('descrição', blank=True)
     speakers = models.ManyToManyField('Speaker', verbose_name='palestrantes', blank=True)
+
+    objects = PeriodManager()
 
     class Meta:
         verbose_name = 'palestra'
