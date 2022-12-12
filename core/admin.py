@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Speaker, Contact, Talk
+from .models import Speaker, Contact, Talk, Course
 
 # Register your models here.
 
@@ -26,7 +26,7 @@ class SpeakerAdmin(admin.ModelAdmin):
         return Contact.objects.filter(kind=Contact.EMAIL, speaker=obj).first()
 
     def phone(self, obj):
-        return obj.contact_set.phones.first()
+        return obj.contact_set.phones().first()
         return Contact.phones.filter(speaker=obj).first()
         return Contact.objects.filter(kind=Contact.PHONE, speaker=obj).first()
     
@@ -39,3 +39,4 @@ class SpeakerAdmin(admin.ModelAdmin):
 
 admin.site.register(Speaker, SpeakerAdmin)
 admin.site.register(Talk)
+admin.site.register(Course)
