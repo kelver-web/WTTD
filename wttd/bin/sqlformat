@@ -1,4 +1,4 @@
-#!/media/kelver/ssd/Cursos/HB/wttd/wttd/bin/python3
+#!/media/kelver/ssd/Cursos/HB/wttd/wttd/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

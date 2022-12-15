@@ -29,14 +29,19 @@ class SpeakerAdmin(admin.ModelAdmin):
         return obj.contact_set.phones().first()
         return Contact.phones.filter(speaker=obj).first()
         return Contact.objects.filter(kind=Contact.PHONE, speaker=obj).first()
-    
-    
+
     website_link.short_description = 'website'
     photo_img.short_description = 'foto'
     email.short_description = 'E-mail'
     phone.short_description = 'Telefone'
 
 
+class TalkModelAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(course=None)
+
+
 admin.site.register(Speaker, SpeakerAdmin)
-admin.site.register(Talk)
+admin.site.register(Talk, TalkModelAdmin)
 admin.site.register(Course)

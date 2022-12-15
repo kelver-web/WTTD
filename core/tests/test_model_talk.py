@@ -3,12 +3,10 @@ from core.models import Talk, Course
 from core.managers import PeriodManager
 
 
-
 class TalkModelTest(TestCase):
     def setUp(self):
         self.talk = Talk.objects.create(
             title='Título da palestra',
-           
         )
     
     def test_create(self):
@@ -43,6 +41,10 @@ class TalkModelTest(TestCase):
         return self.assertEqual('Título da palestra', str(self.talk))
 
 
+    def test_ordering(self):
+        self.assertListEqual(['start'], Talk._meta.ordering)
+
+
 class PeriodManagerTest(TestCase):
     def setUp(self):
         Talk.objects.create(title='Morning Talk', start='11:59')
@@ -61,7 +63,7 @@ class PeriodManagerTest(TestCase):
         expected = ['Afternoon Talk']
         self.assertQuerysetEqual(qs, expected, lambda o: o.title)
 
-        
+
 class CourseModelTest(TestCase):
     def setUp(self):
         self.course = Course.objects.create(
@@ -88,3 +90,6 @@ class CourseModelTest(TestCase):
 
     def test_manager(self):
         self.assertIsInstance(Course.objects, PeriodManager)
+
+    def test_ordering(self):
+        self.assertListEqual(['start'], Course._meta.ordering)

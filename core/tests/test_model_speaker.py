@@ -5,7 +5,7 @@ from core.models import Speaker
 
 class SpeakerMoldelTest(TestCase):
     def setUp(self):
-        self.speaker = speaker = Speaker.objects.create(
+        self.speaker = Speaker.objects.create(
             name = 'Grace Hopper',
             slug = 'grace-hopper',
             photo = 'http://hbn.link/hopper-pic',

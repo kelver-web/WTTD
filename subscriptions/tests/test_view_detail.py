@@ -5,12 +5,11 @@ from subscriptions.models import Subscription
 
 class SubscriptionDetailGet(TestCase):
     def setUp(self):
-        self.obj = Subscription.objects.create(
-            name='Kelver Alves',
-            cpf='12345678901',
-            email='kelverwt@gmail.com',
-            phone='84996063625'
-        )
+        self.obj = Subscription.objects.create(name='Kelver Alves',
+                                               cpf='12345678901',
+                                               email='kelverwt@gmail.com',
+                                               phone='84996063625')
+
         self.response = self.client.get(r('subscriptions:detail', self.obj.pk))
 
     def test_get(self):
